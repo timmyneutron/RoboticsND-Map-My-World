@@ -11,6 +11,7 @@
 
   <!-- launch other relevant files -->
   <include file="$(find my_robot)/launch/robot_description.launch" />
+  <include file="$(find my_robot)/launch/amcl.launch"/>
 
   <!-- world file -->
   <arg name="world_file" default="$(find my_robot)/worlds/timsWorld.world"/>
@@ -33,6 +34,6 @@
         _r $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
 
   <!-- launch rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find my_robot)/rviz/amcl_config.rviz"/>
 
 </launch>
