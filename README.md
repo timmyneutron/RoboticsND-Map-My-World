@@ -23,7 +23,7 @@ To begin, several ROS packages need to be installed as dependencies:
 
 ```
 $ sudo apt-get update && sudo apt-get upgrade -y
-$ sudo apt-get install ros-kinetic-navigation ros-kinetic-map-server ros-kinetic-move-base ros-kinetic-amcl libignition-math2-dev protobuf-compiler
+$ sudo apt-get install ros-kinetic-navigation ros-kinetic-map-server ros-kinetic-move-base ros-kinetic-amcl libignition-math2-dev protobuf-compiler -y
 ```
 
 With the dependencies installed, download/clone the repository, navigate up to the root level directory, and execute:
