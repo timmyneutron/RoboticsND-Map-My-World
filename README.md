@@ -1,16 +1,16 @@
 # Udacity Robotics Nanodegree
-# Project #3: Where Am I?
+# Project #4: Map My World
 
 ![Screenshot](img/screenshot.jpg)
 
 ## Introduction
-This is a project for Udacity's Robotics NanoDegree. It's a robot that uses a Hokuyo laser scanner and Monte Carlo Localization to localize itself inside a simulated environment.
+This is a project for Udacity's Robotics NanoDegree. It's a robot that uses a Hokuyo laser scanner and RGBD camera to perform simultaneous localization and mapping (SLAM).
 
 ## Concepts and Classes
 Concepts explored in this project:
 
-  - Monte Carlo Localization
-  - ROS AMCL package
+  - Simultaneous Localization and Mapping
+  - ROS RTAB-Map package
 
 ## Getting Started
 To view this project, you must have Gazebo and ROS installed on Linux.
@@ -23,24 +23,38 @@ To begin, several ROS packages need to be installed as dependencies:
 
 ```
 $ sudo apt-get update && sudo apt-get upgrade -y
-$ sudo apt-get install ros-kinetic-navigation ros-kinetic-map-server ros-kinetic-move-base ros-kinetic-amcl libignition-math2-dev protobuf-compiler
+$ sudo apt-get install ros-kinetic-teleop-twist-keyboard
 ```
 
 With the dependencies installed, download/clone the repository, navigate up to the root level directory, and execute:
+
 ```
 $ catkin_make
 $ source devel/setup.bash
 $ roslaunch my_robot world.launch
 ```
 
-This will initialize all the nodes. In Rviz, you should see a red robot on a black and white map, surrounded by blue arrows representing the particles associated with the AMCL filter.
-
-You can then command the robot to move in Rviz by pressing the "2D Nav Goal" button at the top, and clicking/dragging on the map. The robot will move the position you click, and the arrows will condense around the robot, indicating the filter's best guess as to the position of the robot (and the associated uncertainty).
 
 To operate the robot via the keyboard, open a second terminal, navigate to the root level directory, and execute:
+
 ```
 $ source devel/setup.bash
 $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 
 You can then command the robot to move using the keys indicated by the teleop node.
+
+Finally, to run SLAM, open a third terminal, navigate to the root level directory, and execute:
+
+```
+$ source devel/setup.bash
+$ roslaunch my_robot mapping.launch
+```
+
+As you move the robot around, RTAB-Map will build a map of the room. When you terminate the mapping window, the map will be saved as a  database file. To view the map, execute:
+
+```
+$ rtabmap-databaseViewer ~/.ros/rtabmap.db
+```
+
+Click "yes" when asked about database parameters, and then select "Constraint View" and "Graph View" from the View menu.
