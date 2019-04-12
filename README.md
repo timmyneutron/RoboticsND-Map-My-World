@@ -51,10 +51,10 @@ $ source devel/setup.bash
 $ roslaunch my_robot mapping.launch
 ```
 
-As you move the robot around, RTAB-Map will build a map of the room. When you terminate the mapping window, the map will be saved as a  database file. To view the map, execute:
+As you move the robot around, RTAB-Map will build a map of the room. When you terminate the mapping window, the map will be saved as a  database file in the launch folder. To view the map, execute:
 
 ```
-$ rtabmap-databaseViewer ~/.ros/rtabmap.db
+$ rtabmap-databaseViewer src/my_robot/launch/rtabmap.db
 ```
 
 Click "yes" when asked about database parameters, and then select "Constraint View" and "Graph View" from the View menu.
